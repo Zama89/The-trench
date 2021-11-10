@@ -1,0 +1,58 @@
+
+body {
+    background-image: url(/images-game/fondo.jpg);
+    margin: 10px;
+}
+
+h1 {
+    color: white;
+    margin: 0;
+    text-align:center;
+    font-family: sans-serif; 
+}
+
+#my_canvas {
+    align-content: center;
+    border:solid 2px rgb(13, 70, 13);
+    background-image: url(/images-game/fondo\ canvas\ project\ 1\ \(2\).png);
+    margin: auto;
+}
+
+.hide {
+    display: none;
+    margin: auto;
+    
+}
+
+
+.splash {
+    height: 600px;
+    width: 800px;
+    background-image: url(/images-game/splash.jpg);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "arial";
+}
+
+#start {
+    align-content: center;
+    margin: auto;
+    margin-top: 16px;
+}
+
+#play {
+    text-align: center;
+    align-content: center;
+}
+
+#gameover {
+    background-image: url("/images-game/gameover.jpg");
+    height: 600px;
+    width: 800px;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    color: white;
+    font-weight: 400px;
+}
