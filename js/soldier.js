@@ -4,9 +4,9 @@ class Player {
     this.posY = posY;
   }
 
-  /*shoot() {
-        //this.posX =
-    } */
+  shoot() {
+        this.posX++;
+    }
 
   //mirar keycode para movimientos//
   up() {

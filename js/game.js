@@ -23,11 +23,14 @@ class Game {
   _printEnemies() {
     this.enemy.forEach((enemy) => {
     this.ctx.fillStyle = "red";
-    this.ctx.fillRect(this.enemy.posX * 10, this.enemy.posY * 10, 8, 8);
+    this.ctx.fillRect(this.enemy.posX * 10, this.enemy.posY * 10, 50, 50);
     })
   }
 
-  _printBullet() {}
+  _printBullet() {
+    this.ctx.fillStyle = "white";
+    this.ctx.arc(this.player.posX, this.player.posY, 8, 8);
+  }
 
   _creatingEnemies () {
         this.enemy.push(new Enemy (780,250))  
@@ -44,6 +47,13 @@ class Game {
           console.log("Down");
           this.player.down();
           break;
+        case "Space":
+          console.log("Shoot");
+          this.player.shoot()
+          break;
+        default:
+          break;
+
       }
     });
   }
@@ -112,9 +122,6 @@ class Game {
         }  
     }
 */
-
-  //buscar referencias codekeys (numerico por tecla) para los movimientos y disparo
-  moveUp() {}
 
   //Muevo el enemigo (solo eje X)
   moverEnemigo() {}
