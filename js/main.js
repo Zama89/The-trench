@@ -12,7 +12,6 @@ window.addEventListener("load", () => {
 
       const fightButton = document.querySelector("#fight");
       fightButton.addEventListener("click", ()  => {
-        console.log ("start")
         const canvas = document.querySelector('#my_canvas');
         const ctx = canvas.getContext('2d');
         const trenchGame = new Game (

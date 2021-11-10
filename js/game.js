@@ -31,7 +31,7 @@ class Game {
     this.ctx.fillStyle = "white";
     this.ctx.arc(this.player.posX, this.player.posY, 8, 8);
   }
-
+  
   _creatingEnemies () {
         this.enemy.push(new Enemy (780,250))  
       } 
