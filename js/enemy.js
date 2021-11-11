@@ -1,17 +1,25 @@
 class Enemy {
-    constructor(posX = 0, posY = 0, speed = 50) {
-      this.posX = posX;
-      this.posY = posY;
-      this.speed = speed;
-      this.startMove();
+    constructor(canvas) {
+      this.size = 50;
+      this.ctx = canvas.getContext('2d');
+      this.posX = canvas.width;
+      this.posY = 200;
+      this.speed = 5;
+      this.isDead = false;
+    }
+
+    draw() {
+      this.ctx.fillStyle = "brown";
+      this.ctx.fillRect(this.posX, this.posY, 50, 50);
     }
   
     advance() {
       this.posX = this.posX - this.speed;
     }
-    startMove() {
-        setInterval(() => {
-            this.advance()
-           }, 900)
+
+    checkCollideWithBullet(bullet) {
+      if(this.posX <= bullet.posX ){
+        this.isDead = true;
+      }
     }
   }

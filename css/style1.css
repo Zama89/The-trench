@@ -1,6 +1,6 @@
 
 body {
-    background-image: url(/images-game/fondo.jpg);
+    background-image: url(../images-game/fondo.jpg);
     margin: 10px;
 }
 
@@ -14,7 +14,7 @@ h1 {
 #my_canvas {
     align-content: center;
     border:solid 2px rgb(13, 70, 13);
-    background-image: url(/images-game/fondo\ canvas\ project\ 1\ \(2\).png);
+    background-image: url(../images-game/fondo\ canvas\ project\ 1\ \(2\).png);
     margin: auto;
 }
 
@@ -28,7 +28,7 @@ h1 {
 .splash {
     height: 600px;
     width: 800px;
-    background-image: url(/images-game/splash.jpg);
+    background-image: url(../images-game/splash.jpg);
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -47,7 +47,7 @@ h1 {
 }
 
 #gameover {
-    background-image: url("/images-game/gameover.jpg");
+    background-image: url("../images-game/gameover.jpg");
     height: 600px;
     width: 800px;
     justify-content: center;
