@@ -1,68 +1,91 @@
 class Game {
   constructor(canvas, gameOver) {
-      this.canvas = canvas;
-      this.ctx = canvas.getContext('2d');
-      this.player = new Player(canvas);
-      this.enemy = [new Enemy (canvas)];
-      this.bullets = [];
-      this.gameOver = gameOver;
-    }
-    _clear() {
-      this.ctx.clearRect(0, 0, 800, 600);
-    }
-    
-    _controls() {
-      document.addEventListener("keydown", (event) => {
-        switch (event.code) {
-          case "ArrowUp":
-            if ( this.player.posY > 0 ) {
-              this.player.up();
-            }
-            break;
-          case "ArrowDown":
-            if ( this.player.posY < 550 ) {
-              this.player.down();
-            }
-            break;
-          case "Space":
-            event.preventDefault();
-            this.bullets.push(new Bullet(this.canvas, (this.player.posY)+21))
-            break;
-          default:
-            break;
-        }
-      });
-    }
+    this.canvas = canvas;
+    this.ctx = canvas.getContext("2d");
+    this.player = new Player(canvas);
+    this.enemy = [];
+    this.bullets = [];
+    this.movements = [];
+    this.gameOver = gameOver;
+  }
+  _clear() {
+    this.ctx.clearRect(0, 0, 800, 600);
+  }
 
-    _actualize() {
-      this._clear();
-      this.player.draw();
-      this.enemy = this.enemy.filter(enemy => enemy.isDead === false);
-      this.enemy.forEach((enemy) => {
+  removeKey(event) {
+    this.movements.splice(this.movements.indexOf(event.keyCode), 1);
+  }
+
+  addKey(event) {
+    event.preventDefault();
+    if (
+      !this.movements.includes(event.keyCode) &&
+      [38, 40, 32].includes(event.keyCode)
+    ) {
+      this.movements.push(event.keyCode);
+    }
+  }
+
+  _actualize() {
+    const controls = {
+      38: () => {
+        if (this.player.posY > 0) {
+          this.player.up();
+        }
+      },
+      40: () => {
+        if (this.player.posY < 550) {
+          this.player.down();
+        }
+      },
+      32: () => {
+        this.bullets.push(new Bullet(this.canvas, this.player.posY + 21));
+      },
+    };
+
+    this._clear();
+
+    this.player.draw();
+    this.enemy = this.enemy.flatMap((enemy) => {
+      if (!enemy.isDead) {
         enemy.advance();
-        this.bullets.forEach(bullet => {
-          enemy.checkCollideWithBullet(bullet)
+        this.bullets.forEach((bullet) => {
+          enemy.checkCollideWithBullet(bullet);
+          bullet.checkLostBullet(bullet);
         });
-        if(enemy.posX <= 70) {
+
+        if (enemy.posX <= 70) {
           this.gameOver();
         }
         enemy.draw();
-      })
-
-      this.bullets.forEach((bullet) => {
+        return enemy;
+      } else {
+        return [];
+      }
+    });
+    this.bullets = this.bullets.flatMap((bullet) => {
+      if (!bullet.isLost) {
         bullet.advance();
         bullet.draw();
-      })
-
-      window.requestAnimationFrame(this._actualize.bind(this));
+        return bullet;
+      }
+      return [];
+    });
+    
+    if (Math.random() <= 0.07) {
+      this.enemy.push(new Enemy(this.canvas));
     }
     
-  start() {
-    this._controls();
+    this.movements.forEach((code) => {
+      controls[code]();
+    });
+
     window.requestAnimationFrame(this._actualize.bind(this));
   }
 
+  start() {
+    document.addEventListener("keyup", this.removeKey.bind(this));
+    document.addEventListener("keydown", this.addKey.bind(this));
+    window.requestAnimationFrame(this._actualize.bind(this));
+  }
 }
-
-
-

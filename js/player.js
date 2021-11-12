@@ -12,10 +12,10 @@ class Player {
   }
 
   up() {
-    this.posY -= 25;
+    this.posY -= 20;
   }
 
   down() {
-    this.posY += 25;
+    this.posY += 20;
   }
 }

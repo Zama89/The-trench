@@ -22,7 +22,7 @@ window.addEventListener("load", () => {
       const fightButton = document.querySelector("#fight");
       fightButton.addEventListener("click", ()  => {
         const canvas = document.querySelector('#my_canvas');
-        const trenchGame = new Game (canvas, ()=> {gameOver()});
+        const trenchGame = new Game(canvas, ()=> {gameOver()});
         trenchGame.start()
         });
       
