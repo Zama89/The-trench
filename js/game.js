@@ -40,6 +40,8 @@ class Game {
       },
       32: () => {
         this.bullets.push(new Bullet(this.canvas, this.player.posY + 21));
+        let audio = document.getElementById("shootSound");
+        audio.play();
       },
     };
 
@@ -52,10 +54,13 @@ class Game {
         this.bullets.forEach((bullet) => {
           enemy.checkCollideWithBullet(bullet);
           bullet.checkLostBullet(bullet);
+          let audio = document.getElementById("deathSound");
+          audio.play();
         });
 
         if (enemy.posX <= 70) {
           this.gameOver();
+        
         }
         enemy.draw();
         return enemy;
@@ -72,7 +77,7 @@ class Game {
       return [];
     });
     
-    if (Math.random() <= 0.07) {
+    if (Math.random() <= 0.006) {
       this.enemy.push(new Enemy(this.canvas));
     }
     

@@ -1,4 +1,6 @@
 window.addEventListener("load", () => { 
+  let audio = document.getElementById("audio");
+  let gameOverSound = document.getElementById("gameOverMusic");
   function splashScreen() {
     function gameOver() {
       const gameover = document.querySelector ("#gameover");
@@ -7,6 +9,8 @@ window.addEventListener("load", () => {
       gameScreen.classList.add("hide");
       gameoverButton.classList.add("hide");
       gameover.classList.remove("hide");
+      audio.pause();
+      gameOverSound.play();  
       }
         
       const playButton = document.querySelector("#play");
@@ -21,9 +25,11 @@ window.addEventListener("load", () => {
 
       const fightButton = document.querySelector("#fight");
       fightButton.addEventListener("click", ()  => {
+        
         const canvas = document.querySelector('#my_canvas');
         const trenchGame = new Game(canvas, ()=> {gameOver()});
         trenchGame.start()
+        audio.play();
         });
       
       const gameoverButton = document.querySelector ("#game-over-button");

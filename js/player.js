@@ -7,15 +7,16 @@ class Player {
   }
 
   draw() {
-    this.ctx.fillStyle = "blue";
-    this.ctx.fillRect(this.posX, this.posY, this.size, this.size);
+    let img = new Image();
+    img.src = '/images-game/ally.png';
+    this.ctx.drawImage(img, this.posX, this.posY);
   }
 
   up() {
-    this.posY -= 20;
+    this.posY -= 5;
   }
 
   down() {
-    this.posY += 20;
+    this.posY += 5;
   }
 }

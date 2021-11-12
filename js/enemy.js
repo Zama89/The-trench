@@ -4,13 +4,14 @@ class Enemy {
     this.ctx = canvas.getContext('2d');
     this.posX = canvas.width;
     this.posY = Math.random() * 550;
-    this.speed = 5;
+    this.speed = 3;
     this.isDead = false;
   }
 
   draw() {
-    this.ctx.fillStyle = "brown";
-    this.ctx.fillRect(this.posX, this.posY, 50, 50);
+    let img = new Image();
+    img.src = '/images-game/axis.png';
+    this.ctx.drawImage(img, this.posX, this.posY);
   }
 
   advance() {
@@ -18,7 +19,7 @@ class Enemy {
   }
 
   checkCollideWithBullet(bullet) {
-    if(bullet.posY >= this.posY && bullet.posY <= this.posY + 50  && this.posX <= bullet.posX ){
+    if(bullet.posY >= this.posY && bullet.posY <= this.posY + 80  && this.posX <= bullet.posX ){
       this.isDead = true;
     }
   }
