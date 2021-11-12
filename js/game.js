@@ -77,7 +77,7 @@ class Game {
       return [];
     });
     
-    if (Math.random() <= 0.05) {
+    if (Math.random() <= 0.03) {
       this.enemy.push(new Enemy(this.canvas));
     }
     
