@@ -16,6 +16,7 @@ h1 {
     border:solid 2px rgb(13, 70, 13);
     background-image: url(../images-game/fondo\ canvas\ project\ 1\ \(2\).png);
     margin: auto;
+    justify-content: center;
 }
 
 .hide {

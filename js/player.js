@@ -8,15 +8,14 @@ class Player {
 
   draw() {
     this.ctx.fillStyle = "blue";
-    this.ctx.fillRect(this.posX, this.posY, this.size, this.size); //centro de la trinchera, tamaño 50x50
+    this.ctx.fillRect(this.posX, this.posY, this.size, this.size);
   }
 
-  //mirar keycode para movimientos//
   up() {
-    this.posY -= 50;
+    this.posY -= 25;
   }
 
   down() {
-    this.posY += 50;
+    this.posY += 25;
   }
 }
